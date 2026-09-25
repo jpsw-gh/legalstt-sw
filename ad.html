@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>広告</title>
+<!--
+  広告枠の見本(設計書§17.5)。アプリの上3行の右に、幅210px×高さ100pxの枠として出る。
+  基本の大きさは180×60px。枠より大きい分は切れる(スクロールしない)。見本は右上に寄せてある。
+
+  守ること(アプリ側で止めているので、書いても動かない・表示されない):
+  - <script> は動かない。配信業者の広告タグ(Googleの広告など)は貼っても動かない。
+  - 画像・CSS・フォントは https の住所で書く(相対の住所は解決されない。http は読まれない)。
+    例: <img src="https://<公開用アカウント>.github.io/<リポジトリ名>/banner.png" width="180" height="60" alt="…">
+  - リンクは押すと既定のブラウザで開く。https 以外のリンクは開かない。
+  - ファイルは UTF-8 で保存し、256KB 以内に収める(超えると枠ごと出ない)。
+  - 「広告」の表記はアプリ側では付けないので、要る時はこのHTMLの中に書く
+    (Microsoft Storeの審査方針10.10.4=広告は本体の中身と見分けられること)。
+  - 置き場の外の住所から画像を読むと、その住所の持ち主にも利用者のIPアドレスが届く。
+-->
+<style>
+  html, body { margin: 0; padding: 0; width: 210px; height: 100px; overflow: hidden; }
+  body {
+    font-family: "Yu Gothic UI", "Meiryo UI", "Segoe UI", sans-serif;
+    color: #1F2328;
+  }
+  a.banner {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 180px;
+    height: 60px;
+    padding: 6px 10px;
+    display: block;
+    background: #F4F6F8;
+    border: 1px solid #D0D5DB;
+    border-radius: 6px;
+    color: inherit;
+    text-decoration: none;
+    overflow: hidden;
+  }
+  .pr {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 10px;
+    color: #4A5056;
+  }
+  .title { font-size: 13px; font-weight: 600; line-height: 1.4; margin-right: 26px; }
+  .sub { font-size: 11px; color: #4A5056; line-height: 1.4; }
+</style>
+</head>
+<body>
+  <!-- 差し替える: 飛び先の住所と文言(画像のバナーにする時は中身を <img> 1つに置き換える) -->
+  <a class="banner" href="https://example.com/">
+    <span class="pr">広告</span>
+    <div class="title">見本のバナー</div>
+    <div class="sub">文言と飛び先を差し替えます</div>
+  </a>
+</body>
+</html>
